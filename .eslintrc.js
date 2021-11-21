@@ -7,6 +7,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@next/next/no-img-element': 'off',
+    'react/no-unescaped-entities': 'off'
   },
   globals: {
     React: 'writable',
