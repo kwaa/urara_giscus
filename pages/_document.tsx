@@ -23,7 +23,7 @@ class CustomDocument extends Document {
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="stylesheet" href={themeUrl} crossOrigin="anonymous" id="giscus-theme" />
           <script>
-            document.domain = 'kwaa.dev'
+            document.domain = &quot;kwaa.dev&quot;
           </script>
         </Head>
         <body>
