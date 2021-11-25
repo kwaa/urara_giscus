@@ -92,7 +92,7 @@ export default function WidgetPage({
     reactionsEnabled,
     emitMetadata,
   });
-  
+
   const ref = useRef(null);
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function WidgetPage({
         setTheme(newConfig.theme);
         delete newConfig.theme;
       }
-      
+
       if ('css' in newConfig) {
         ref.current.innerText = newConfig.css;
         delete newConfig.css;
