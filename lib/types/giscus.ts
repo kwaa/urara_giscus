@@ -46,6 +46,7 @@ export interface IMetadataMessage {
 export interface ISetConfigMessage {
   setConfig: {
     theme?: Theme;
+    css?: string;
     repo?: string;
     term?: string;
     number?: number;
