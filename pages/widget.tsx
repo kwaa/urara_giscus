@@ -93,7 +93,7 @@ export default function WidgetPage({
     emitMetadata,
   });
 
-  const ref = useRef(null);
+  const ref = useRef('');
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -111,9 +111,7 @@ export default function WidgetPage({
       }
 
       if ('css' in newConfig) {
-        if (null !== ref.current) {
-          ref.current.innerText = newConfig.css;
-        }
+        ref.current = newConfig.css;
         delete newConfig.css;
       }
 
@@ -137,7 +135,7 @@ export default function WidgetPage({
   return (
     <>
       <Head>
-        <style type="text/css" ref={ref}></style>
+        <style type="text/css">{ref.current}</style>
         <base target="_top" />
       </Head>
 
