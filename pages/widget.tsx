@@ -111,7 +111,9 @@ export default function WidgetPage({
       }
 
       if ('css' in newConfig) {
-        ref.current.innerText = newConfig.css;
+        if (null !== ref.current) {
+          ref.current.innerText = newConfig.css;
+        }
         delete newConfig.css;
       }
 
