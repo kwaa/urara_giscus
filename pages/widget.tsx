@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Script from 'next/script';
-import { ContextType, useContext, useEffect, useState } from 'react';
+import { ContextType, useContext, useEffect, useState, useRef } from 'react';
 import Widget from '../components/Widget';
 import { assertOrigin } from '../lib/config';
 import { ConfigContext, ThemeContext } from '../lib/context';
@@ -92,6 +92,8 @@ export default function WidgetPage({
     reactionsEnabled,
     emitMetadata,
   });
+  
+  const ref = useRef(null)
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -106,6 +108,11 @@ export default function WidgetPage({
       if ('theme' in newConfig) {
         setTheme(newConfig.theme);
         delete newConfig.theme;
+      }
+      
+      if ('css' in newConfig) {
+        ref.current.innerText = newConfig.css
+        delete newConfig.css;
       }
 
       if (Router.isReady && newConfig.lang in availableLanguages) {
@@ -128,6 +135,7 @@ export default function WidgetPage({
   return (
     <>
       <Head>
+        <style type="text/css" ref={ref}></style>
         <base target="_top" />
       </Head>
 
