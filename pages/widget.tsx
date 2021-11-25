@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Script from 'next/script';
-import { ContextType, useContext, useEffect, useState, useRef } from 'react';
+import { ContextType, useContext, useEffect, useState } from 'react';
 import Widget from '../components/Widget';
 import { assertOrigin } from '../lib/config';
 import { ConfigContext, ThemeContext } from '../lib/context';
@@ -93,7 +93,7 @@ export default function WidgetPage({
     emitMetadata,
   });
 
-  const ref = useRef('');
+  const [css, setCSS] = useState('')
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -111,7 +111,7 @@ export default function WidgetPage({
       }
 
       if ('css' in newConfig) {
-        ref.current = newConfig.css;
+        setCSS(newConfig.css);
         delete newConfig.css;
       }
 
@@ -135,7 +135,7 @@ export default function WidgetPage({
   return (
     <>
       <Head>
-        <style type="text/css">{ref.current}</style>
+        <style type="text/css">{css}</style>
         <base target="_top" />
       </Head>
 
