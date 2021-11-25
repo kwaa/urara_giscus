@@ -93,7 +93,7 @@ export default function WidgetPage({
     emitMetadata,
   });
   
-  const ref = useRef(null)
+  const ref = useRef(null);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -111,7 +111,7 @@ export default function WidgetPage({
       }
       
       if ('css' in newConfig) {
-        ref.current.innerText = newConfig.css
+        ref.current.innerText = newConfig.css;
         delete newConfig.css;
       }
 
